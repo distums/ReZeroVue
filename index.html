@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>ReZeroVue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>original message: {{ message }}</p>
+    <p>reversed message: {{reversedMessage}}</p>
+    <input type="search" v-model="question">
+    <output>{{answer}}</output>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!',
+        question: '',
+        answer: 'no answer'
+      },
+      computed: {
+        reversedMessage() {
+          return this.message.split('').reverse().join('');
+        },
+      },
+      watch: {
+        question(after, before) {
+          this.answer = `your answer is ${this.question}`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
